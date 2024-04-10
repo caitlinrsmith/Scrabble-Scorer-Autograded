@@ -32,18 +32,47 @@ function oldScrabbleScorer(word) {
 // your job is to finish writing these functions and variables that we've named //
 // don't change the names or your program won't work as expected. //
 
+let userWord = "";
+
 function initialPrompt() {
-  let userWord = input.question("Let's play some scrabble! Enter a word: ");
+   userWord = input.question("Let's play some scrabble! Enter a word: ");
   console.log(oldScrabbleScorer(userWord));
   simpleScorer(userWord);
+  vowelBonusScorer();
+  return userWord;
 }
 
 function simpleScorer(word) {
-  console.log(word.length);
+  console.log(`The simple scorer gives ${word} ${word.length} point(s).\n`);
   return word.length;
 }
 
-let vowelBonusScorer;
+function vowelBonusScorer() {
+  let i = 0;
+  let points = 0;
+
+  while ( i < userWord.length) {
+    if (
+      userWord[i].toLowerCase() === 'a' ||
+      userWord[i].toLowerCase() === 'e' ||
+      userWord[i].toLowerCase() === 'i' ||
+      userWord[i].toLowerCase() === 'o' ||
+      userWord[i].toLowerCase() === 'u'
+    ) {
+      points += 3;
+      console.log("The vowel '" + userWord[i] + "' is worth: 3 points.");
+      i = i + 1;
+    } else {
+      points += 1;
+      console.log("The consonant '" + userWord[i] + "' is worth: 1 point.");
+      i = i + 1;
+    }
+    //console.log(vowelBonusScorer(userWord));
+    let wordArray = userWord.toUpperCase().split("");
+  }
+  return;
+};
+
 
 let scrabbleScorer;
 
@@ -59,6 +88,7 @@ function runProgram() {
    initialPrompt();
    
 }
+
 
 // Don't write any code below this line //
 // And don't change these or your program will not run as expected //
