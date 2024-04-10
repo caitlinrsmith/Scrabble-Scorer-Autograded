@@ -13,6 +13,7 @@ const oldPointStructure = {
 };
 
 function oldScrabbleScorer(word) {
+  if (userScorer === "2") {
 	word = word.toUpperCase();
 	let letterPoints = "";
  
@@ -26,7 +27,8 @@ function oldScrabbleScorer(word) {
  
 	  }
 	}
-	return letterPoints;
+  return letterPoints;
+  }
  }
 
 // your job is to finish writing these functions and variables that we've named //
@@ -44,11 +46,13 @@ function initialPrompt() {
 }
 
 function simpleScorer(word) {
-  console.log(`The simple scorer gives ${word} ${word.length} point(s).\n`);
+  if (userScorer === "0") {
+  console.log(`The simple scorer gives ${word} ${word.length} point(s).\n`);}
   return word.length;
 }
 
-function vowelBonusScorer() {
+function vowelBonusScorer() { 
+  if (userScorer === "1") {
   let i = 0;
   let points = 0;
 
@@ -70,6 +74,7 @@ function vowelBonusScorer() {
     }
     let wordArray = userWord.toUpperCase().split("");
   }
+  }
   return;
 };
 
@@ -83,16 +88,16 @@ const scoringAlgorithms = [
 ];
 
 function scorerPrompt() {
-  if (userScorer === 0) {
-    console.log("You selected the Simple Scorer algorithm.");
-  }
-  else if (userScorer === 1) {
-    console.log("You selected the Bonus Vowels algorithm.");
-  }
-  else if (userScorer === 2) {
-    console.log("You selected the Scrabble Scorer algorithm.");
-  }
-  return;
+  // if (userScorer === "0") {
+  //   console.log("You selected the Simple Scorer algorithm.");
+  // }
+  // else if (userScorer === "1") {
+  //   console.log("You selected the Bonus Vowels algorithm.");
+  // }
+  // else if (userScorer === "2") {
+  //   console.log("You selected the Scrabble Scorer algorithm.");
+  // }
+  // return;
 }
 
 function transform() {};
