@@ -67,7 +67,6 @@ function vowelBonusScorer() {
       console.log("The consonant '" + userWord[i] + "' is worth: 1 point.");
       i = i + 1;
     }
-    //console.log(vowelBonusScorer(userWord));
     let wordArray = userWord.toUpperCase().split("");
   }
   return;
@@ -76,9 +75,15 @@ function vowelBonusScorer() {
 
 let scrabbleScorer;
 
-const scoringAlgorithms = [];
+const scoringAlgorithms = [
+  {name: "Simple Score", description: "Each letter is worth 1 point.", scoringFunction: "A function with a parameter for user input that returns a score."},
+  {name: "Bonus Vowels", description: "Vowels are 3 pts, consonants are 1 pt.", scoringFunction: "A function that returns a score based on the number of vowels and consonants."},
+  {name: "Scrabble", description: "The traditional scoring algorithm.", scoringFunctionn: "Uses the oldScrabbleScorer() function to determine the score for a given word."}
+];
 
-function scorerPrompt() {}
+function scorerPrompt() {
+  userScorer = input.question("Which scoring algorithm would you like to use? Type 0 1 or 2.");
+}
 
 function transform() {};
 
