@@ -38,7 +38,16 @@ let userWord = "";
 
 function initialPrompt() {
    userWord = input.question("Let's play some scrabble! Enter a word: ");
-   userScorer = input.question("Which scoring algorithm would you like to use? Type 0 1 or 2.");
+   userScorer = input.question("\n Which scoring algorithm would you like to use? Type 0 1 or 2. \n");
+   if (userScorer === "0") {
+    console.log("You selected the Simple Scorer algorithm.\n");
+  }
+  else if (userScorer === "1") {
+    console.log("You selected the Bonus Vowels algorithm.\n");
+  }
+  else if (userScorer === "2") {
+    console.log("You selected the Scrabble Scorer algorithm.\n");
+  }
   simpleScorer(userWord);
   vowelBonusScorer();
   return userWord;
@@ -87,16 +96,7 @@ const scoringAlgorithms = [
 ];
 
 function scorerPrompt() {
-  if (userScorer === "0") {
-    console.log("You selected the Simple Scorer algorithm.");
-  }
-  else if (userScorer === "1") {
-    console.log("You selected the Bonus Vowels algorithm.");
-  }
-  else if (userScorer === "2") {
-    console.log("You selected the Scrabble Scorer algorithm.");
-  }
-  return;
+
 }
 
 function transform() {};
