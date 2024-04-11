@@ -12,8 +12,7 @@ const oldPointStructure = {
   10: ['Q', 'Z']
 };
 
-function oldScrabbleScorer(word) {
-  if (userScorer === "2") {
+function scrabbleScorer(word) {
 	word = word.toUpperCase();
 	let letterPoints = "";
  
@@ -27,8 +26,8 @@ function oldScrabbleScorer(word) {
  
 	  }
 	}
+  console.log("Your letter points are: \n" + letterPoints);
   return letterPoints;
-  }
  }
 
 // your job is to finish writing these functions and variables that we've named //
@@ -37,19 +36,20 @@ function oldScrabbleScorer(word) {
 let userWord = "";
 
 function initialPrompt() {
-   userWord = input.question("Let's play some scrabble! Enter a word: ");
+   userWord = input.question("Let's play some Scrabble! Please enter a word: ");
    userScorer = input.question("\n Which scoring algorithm would you like to use? Type 0 1 or 2. \n");
    if (userScorer === "0") {
     console.log("You selected the Simple Scorer algorithm.\n");
+    simpleScorer(userWord);
   }
   else if (userScorer === "1") {
     console.log("You selected the Bonus Vowels algorithm.\n");
+    vowelBonusScorer();
   }
   else if (userScorer === "2") {
     console.log("You selected the Scrabble Scorer algorithm.\n");
+    scrabbleScorer(userWord);
   }
-  simpleScorer(userWord);
-  vowelBonusScorer();
   return userWord;
 }
 
@@ -87,7 +87,7 @@ function vowelBonusScorer() {
 };
 
 
-let scrabbleScorer;
+
 
 const scoringAlgorithms = [
   {name: "Simple Score", description: "Each letter is worth 1 point.", scoringFunction: "A function with a parameter for user input that returns a score."},
