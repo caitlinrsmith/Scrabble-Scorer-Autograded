@@ -36,18 +36,23 @@ function scrabbleScorer(word) {
 let userWord = "";
 
 function initialPrompt() {
-   userWord = input.question("Let's play some Scrabble! Please enter a word: ");
-   userScorer = input.question("\n Which scoring algorithm would you like to use? Type 0 1 or 2. \n");
+   userWord = input.question("Let's play some Scrabble!\n \nPlease enter a word: ");
+   console.log(`\n  Which scoring algorithm would you like to use?\n
+   \t0 - Simple: One point per character \n
+   \t1 - Vowel Bonus: Vowels are worrth 3 points \n
+   \t2 - Scrabble: Uses the Scrabble point system \n
+   `);
+   userScorer = input.question("\nEnter 0, 1, or 2:\n");
    if (userScorer === "0") {
-    console.log("You selected the Simple Scorer algorithm.\n");
+    console.log("\mYou selected the Simple Scorer algorithm.\n");
     simpleScorer(userWord);
   }
   else if (userScorer === "1") {
-    console.log("You selected the Bonus Vowels algorithm.\n");
+    console.log("\nYou selected the Bonus Vowels algorithm.\n");
     vowelBonusScorer();
   }
   else if (userScorer === "2") {
-    console.log("You selected the Scrabble Scorer algorithm.\n");
+    console.log("\nYou selected the Scrabble Scorer algorithm.\n");
     scrabbleScorer(userWord);
   }
   return userWord;
