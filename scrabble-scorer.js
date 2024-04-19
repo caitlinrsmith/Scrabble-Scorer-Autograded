@@ -15,6 +15,7 @@ const oldPointStructure = {
 let newPointStructure = transform();
 
 function scrabbleScorer(word) {
+  console.log("You selected the Scrabble Scoring algorithm.");
   let points = 0;
   let wordArray = Array.from(word);
   for (let i = 0; i < wordArray.length; i++)
@@ -38,13 +39,14 @@ function initialPrompt() {
 }
 
 function simpleScorer(word) {
-  if (userScorer === "0") {
-  console.log(`The simple scorer gives ${word} ${word.length} point(s).\n`);}
+  console.log("You selected the Simple Scoring algorithm.");
+  console.log(`The simple scorer gives ${word} ${word.length} point(s).\n`);
   let score = word.length;
   return score;
 }
 
 function vowelBonusScorer(word) { 
+  console.log("You selected the Vowel Bonus algorithm.");
   let points = 0;
   let i = 0;
   while ( i < word.length) {
@@ -92,25 +94,28 @@ const scoringAlgorithms = [simpleScoring, bonusScoring, scrabbleScoring];
 
 
 function scorerPrompt() {
-  console.log(`\n  Which scoring algorithm would you like to use?\n
+
+   let check = false;
+
+   while(check === false)
+   {
+   console.log(`\n  Which scoring algorithm would you like to use?\n
    \t0 - Simple: One point per character \n
    \t1 - Vowel Bonus: Vowels are worth 3 points \n
    \t2 - Scrabble: Uses the Scrabble point system \n
    `);
    userScorer = input.question("\nEnter 0, 1, or 2:\n");
-   if (userScorer === "0") {
-    console.log("\nYou selected the Simple Scorer algorithm.\n");
-    simpleScorer(userWord);
+   if (userScorer >= 0 && userScorer < 3) {
+    check = true;
+   }
+   else{
+    console.log("error please select a number between 0 and 2");
   }
-  else if (userScorer === "1") {
-    console.log("\nYou selected the Bonus Vowels algorithm.\n");
-    vowelBonusScorer(userWord);
+   }
+   return Number(userScorer);
   }
-  else if (userScorer === "2") {
-    console.log("\nYou selected the Scrabble Scorer algorithm.\n");
-    scrabbleScorer(userWord);
-  }
-}
+
+
 
 function transform() {
   let tempPointStructure = {};
@@ -124,9 +129,9 @@ function transform() {
 }
 
 function runProgram() {
-   initialPrompt();
-   scorerPrompt();
-   
+   let selectedWord = initialPrompt();
+   let scoreMethod = scorerPrompt();
+   scoringAlgorithms[scoreMethod].scorerFunction(selectedWord);
    
 }
 
