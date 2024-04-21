@@ -15,16 +15,16 @@ const oldPointStructure = {
 let newPointStructure = transform();
 
 function scrabbleScorer(word) {
-  console.log("You selected the Scrabble Scoring algorithm.");
+  // console.log("You selected the Scrabble Scoring algorithm.");
   let points = 0;
   let wordArray = Array.from(word);
   for (let i = 0; i < wordArray.length; i++)
   {
-    console.log ("Your letter is " + wordArray[i]);
+    // console.log ("Your letter is " + wordArray[i]);
     points += newPointStructure[wordArray[i].toLowerCase()];
   }
 
-  console.log ("Your total points is " + points);
+  // console.log ("Your total points is " + points);
   return points;
 }
 
@@ -39,8 +39,8 @@ function initialPrompt() {
 }
 
 function simpleScorer(word) {
-  console.log("You selected the Simple Scoring algorithm.");
-  console.log(`The simple scorer gives ${word} ${word.length} point(s).\n`);
+  // console.log("You selected the Simple Scoring algorithm.");
+  // console.log(`The simple scorer gives ${word} ${word.length} point(s).\n`);
   let score = word.length;
   return score;
 }
@@ -131,8 +131,8 @@ function transform() {
 function runProgram() {
    let selectedWord = initialPrompt();
    let scoreMethod = scorerPrompt();
-   scoringAlgorithms[scoreMethod].scorerFunction(selectedWord);
-   
+   let points = scoringAlgorithms[scoreMethod].scorerFunction(selectedWord);
+   console.log(`Using ${scoringAlgorithms[scoreMethod].name} your score is ${points}`);
 }
 
 // console.log("Scrabble scoring values for");
